@@ -27,6 +27,9 @@
     <title>rennecds</title>
   </head>
   <body>
+    <div class="load" id="load">
+      <img src="load.png" class="img-load">
+    </div>
     <div class="cover">
       <div class="container">
         <div class="row">
@@ -53,7 +56,7 @@
           <div class="box-item">
             <center>
               <img src="icon_music.svg" class="icone">
-              <h2 class="text-secondary">+5000</h2>
+              <h2 class="text-secondary">+<span id="n-music">5000</span></h2>
               <p>
                 Músicas<br>
                 Playlist de pastas e músicas escolhidas uma a uma para garantir um repertório diversificado e na mais alta qualidade para seu som automotivo.
@@ -65,7 +68,7 @@
           <div class="box-item">
             <center>
               <img src="icon_folder.svg" class="icone">
-              <h2 class="text-secondary">+300</h2>
+              <h2 class="text-secondary">+<span id="n-folder">300</span></h2>
               <p>
                 Pastas<br>
                 Repertório dividido em ritmos: Forró Novo; Pisadinha; Brega Funk; Funk; Arrochadeiras; Swingueira; Arrocha; Eletrônicas; Hungria; Forró Antigo; Sertanejo; Seresta, Brega & mpb; Reggae; Pagode; Passagens e Testes; Racha de Som.
@@ -77,7 +80,7 @@
           <div class="box-item">
             <center>
               <img src="icon_remaster.svg" class="icone">
-              <h2 class="text-secondary">100%</h2>
+              <h2 class="text-secondary"><span id="n-remaster">100</span>%</h2>
               <p align="center">Remasterizado<br>Repertório tratado por inteiro no maior software de áudio do momento (Studio One, Sound Forge & Reaper) na qualidade perfeita para os amantes de som automotivo.</p>
             </center>
           </div>
@@ -140,5 +143,30 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"></script>
+    <script>
+      var overlay = document.getElementById("load");
+
+      window.addEventListener('load', function(){
+        overlay.style.display = 'none';
+      });
+
+      $(document).ready(() => {
+        var effect = false;
+        $(window).scroll(function(e){
+          let scroll = $(window).scrollTop();
+          if( effect == false && scroll > 300 ){
+            $('#n-folder').counterUp({delay:10,time:2000});
+            $('#n-music').counterUp({delay:10,time:2000});
+            $('#n-remaster').counterUp({delay:10,time:2000});
+            effect = true;
+          }
+        });
+      });
+
+      
+    </script>
+  
   </body>
 </html>
